@@ -1,0 +1,27 @@
+#include<Servo.h>
+Servo myservo;
+int pos=0;
+const float alpha = 0.5;
+double ffr , nffr, num;
+void setup()
+{
+  myservo.attach(8);
+  Serial.begin(300);
+  }
+
+void loop()
+{
+  int flexReading = analogRead(0); //Reading Flex Value
+
+  //Low Pass Filter
+  ffr = flexReading * alpha + (ffr* (1.0 - alpha));
+  int nffr = map(ffr, 2,14 , 90, 0);
+  
+  num = constrain(nffr , 0, 90);
+  pos = map ( num, 0,90 , 0 , 180 ); 
+    myservo.write(pos);
+    delay(300); 
+    
+  Serial.print(num);
+  Serial.print("\n");
+}
