@@ -1,1 +1,1 @@
-# Hand-Guesture-Robot-using-Servo-Motor-and-Flex-Readings
+# Hand-Gesture-Robot-using-Servo-Motor-and-Flex-Readings
